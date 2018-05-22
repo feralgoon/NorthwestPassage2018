@@ -1,3 +1,4 @@
+@(crewCount : Int)(crewNames : List[String])(avatar : Int)
 <!DOCTYPE html>
 @import helper._
 <html lang="en">
@@ -7,10 +8,18 @@
 </head>
 <body>
 <h1>Frigid Waters</h1>
+<img src='@routes.Assets.versioned("images/northstep.jpg")' width="200px"><img src='@routes.Assets.versioned("images/kitten" + avatar + ".jpg")' width="150"><br>
 <p>As you begin your northward journey, the water chills to a degree none of your crew have seen before.
     Coelacanths can be seen following the boat, and people seem uneasy. In the distance you can see
-    ice forming on the surface of the ocean, and you hear murmurs that you should turn back.
+    ice forming on the surface of the ocean, and you hear the @crewCount men remaining murmuring that you should turn back.
 </p>
+<br>
+<p>Remaining Crew Members:</p>
+<ul>
+    @for(name <- crewNames){
+    <li>@name</li>
+    }
+</ul>
 <br><br>
 <form action="@routes.GameController.postNorthFromEngland" method="POST">
     @CSRF.formField

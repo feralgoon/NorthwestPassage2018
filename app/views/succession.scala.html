@@ -1,0 +1,36 @@
+@(playerName : String)(crewCount : Int)(crewNames : List[String])(avatar : Int)
+<!DOCTYPE html>
+@import helper._
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Northwest Passage</title>
+</head>
+<body>
+<h1>You've been chosen!</h1>
+<img src='@routes.Assets.versioned("images/crown.jpg")' width="200px"><img src='@routes.Assets.versioned("images/kitten" + avatar + ".jpg")' width="150"><br>
+<p>When you petition the queen for the rights to begin your journey, the princess happens to be watching.
+    She glides over to the queen, and whispers in her ear. After a moment of them talking, you are informed that
+    your voyage won't be going as expected. The princess wants to have you as her own!
+    You are given a sizeable plot of land, and are now next in line to the throne. Your @crewCount men become your knights,
+    keeping your land in order while you attend matters of the state.
+    The end for @playerName!
+</p>
+<br>
+<p>Knighted Crew Members:</p>
+<ul>
+    @for(name <- crewNames){
+    <li>@name</li>
+    }
+</ul>
+<br><br>
+<form action="@routes.GameController.getWelcome" method="GET">
+    @CSRF.formField
+    <input type="submit" value="New Player"/>
+</form>
+<form action="@routes.GameController.postStart" method="POST">
+    @CSRF.formField
+    <input type="submit" value="Play it Again"/>
+</form>
+</body>
+</html>

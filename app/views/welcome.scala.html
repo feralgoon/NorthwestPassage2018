@@ -14,7 +14,12 @@
 
 <form action="@routes.GameController.postStart" method="POST">
     @CSRF.formField
-    <input type="text" value="Enter Name" name="playerName">
+    <input type="text" value="Enter Name" name="playerName"><br>
+    Choose a kitten for your avatar:<br>
+    <input type="radio" name="avatar" value="1"/><img src='@routes.Assets.versioned("images/kitten1.jpg")' width="150"><br>
+    <input type="radio" name="avatar" value="2"/><img src='@routes.Assets.versioned("images/kitten2.jpg")' width="150"><br>
+    <input type="radio" name="avatar" value="3"/><img src='@routes.Assets.versioned("images/kitten3.jpg")' width="150"><br>
+    <input type="radio" name="avatar" value="4"/><img src='@routes.Assets.versioned("images/kitten4.jpg")' width="150"><br>
     <input type="submit" value="Let's Do This!"/>
 </form>
 <form action="@routes.GameController.getKittens" method="GET">

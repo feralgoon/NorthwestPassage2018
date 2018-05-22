@@ -1,4 +1,4 @@
-@(playerName : String)
+@(playerName : String)(crewCount : Int)(crewNames : List[String])(avatar : Int)
 <!DOCTYPE html>
 @import helper._
 <html lang="en">
@@ -8,11 +8,20 @@
 </head>
 <body>
 <h1>Too Much Trying to go East</h1>
+<img src='@routes.Assets.versioned("images/eastend.jpg")' width="200px"><img src='@routes.Assets.versioned("images/kitten" + avatar + ".jpg")' width="150"><br>
 <p>You should have paid more attention to your intuition.
     You run ashore while trying to turn around in the latest dead end bay.
     While trying to patch up the ship you and your crew are almost eaten by a rampaging herd of feral kittens.
-    The kittens destroy what remains of your ship.  A passing Viking Cruise ship picks you up and takes you back to port in disgrace. The end for @playerName.
+    The kittens destroy what remains of your ship.  A passing Viking Cruise ship picks you up and takes you back to port in disgrace. The end for @playerName
+    and the @crewCount men left onboard.
 </p>
+<br>
+<p>Remaining Crew Members:</p>
+    <ul>
+    @for(name <- crewNames){
+        <li>@name</li>
+    }
+    </ul>
     <br><br>
 <form action="@routes.GameController.getWelcome" method="GET">
     @CSRF.formField

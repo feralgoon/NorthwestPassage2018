@@ -1,4 +1,4 @@
-@(playerName : String)
+@(playerName : String)(crewCount : Int)(crewNames : List[String])(avatar : Int)
 <!DOCTYPE html>
 @import helper._
 <html lang="en">
@@ -8,14 +8,22 @@
 </head>
 <body>
 <h1>Too Much Ice</h1>
+<img src='@routes.Assets.versioned("images/northend.jpg")' width="200px"><img src='@routes.Assets.versioned("images/kitten" + avatar + ".jpg")' width="150"><br>
 <p>You should have known if it was that easy someone would have done it already.
     Your ship is hit by an iceberg.
     You and your crew fall into the sea and are attacked by giant coelacanths.
     Lucky for you a passing catfish chases away the coelacanths.
     You are all able to swim to the shore of a frozen island where you find nothing to eat but lettuce.
     Years later you are rescued by a ship named Titanic on its way to the New World.
-    The end for @playerName.
+    The end for @playerName and the @crewCount brave crewmen left.
 </p>
+<br>
+<p>Remaining Crew Members:</p>
+<ul>
+    @for(name <- crewNames){
+    <li>@name</li>
+    }
+</ul>
 <br><br>
 <form action="@routes.GameController.getWelcome" method="GET">
     @CSRF.formField

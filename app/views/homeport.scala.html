@@ -1,3 +1,4 @@
+@(crewCount : Int)(crewNames : List[String])(avatar : Int)
 <!DOCTYPE html>
 @import helper._
 <html lang="en">
@@ -7,14 +8,22 @@
 </head>
 <body>
 <h1>Shame</h1>
+<img src='@routes.Assets.versioned("images/homeport.jpg")' width="200px"><img src='@routes.Assets.versioned("images/kitten" + avatar + ".jpg")' width="150"><br>
 <p>You are back at home port with nothing to show for it.
-    Better get going before someone notices.
+    Better get going before someone notices that you only have @crewCount men left.
 </p>
+<br>
+<p>Remaining Crew Members:</p>
+<ul>
+    @for(name <- crewNames){
+    <li>@name</li>
+    }
+</ul>
 <form action="@routes.GameController.postWestFromEngland" method="POST">
     @CSRF.formField
     <input type="submit" value="Sail West"/>
 </form>
-<form action="@routes.GameController.postNorthFromEngland" method="POST">
+<form action="@routes.GameController.postNorthStep" method="POST">
     @CSRF.formField
     <input type="submit" value="Sail North"/>
 </form>

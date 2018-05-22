@@ -1,3 +1,4 @@
+@(crewNames : List[String])(avatar : Int)
 <!DOCTYPE html>
 @import helper._
 <html lang="en">
@@ -7,11 +8,20 @@
 </head>
 <body>
 <h1>Let the adventure begin</h1>
+<img src='@routes.Assets.versioned("images/start.jpg")' width="200px"><img src='@routes.Assets.versioned("images/kitten" + avatar + ".jpg")' width="150"><br>
 <p>You have been chosen by the Queen of England to find a northern water way to China to acquire much needed fidget spinners.
     You are given a small ship with a crew of 10 people.
     Most of your sailor friends believe that your best chance of success is to sail northwest above North America.
     However, some of your crew believe you should try going east over Russia or north over the top of the world instead.
 </p>
+<br>
+<p>Remaining Crew Members:</p>
+<ul>
+    @for(name <- crewNames){
+    <li>@name</li>
+    }
+</ul>
+<br><br>
 <form action="@routes.GameController.postWestFromEngland" method="POST">
     @CSRF.formField
     <input type="submit" value="Sail West"/>

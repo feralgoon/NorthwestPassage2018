@@ -1,3 +1,4 @@
+@(crewCount : Int)(crewMember : String)(crewNames : List[String])(avatar : Int)
 <!DOCTYPE html>
 @import helper._
 <html lang="en">
@@ -7,15 +8,24 @@
 </head>
 <body>
 <h1>Icebergs Everywhere</h1>
+<img src='@routes.Assets.versioned("images/west.jpg")' width="200px"><img src='@routes.Assets.versioned("images/kitten" + avatar + ".jpg")' width="150"><br>
 <p>You sail for months and see a lot of icebergs.
     Food is running out and the crew is starting to get scurvy.
     A small building resembling an outhouse appears on the deck of your ship.
     A door opens and out comes a man wearing a large scarf.
     He says something about being the doctor and hands you a large bottle of pills that says Flintstones on it.
     He tells you to take these to cure your scurvy.  He goes back into the little building and it disappears.
-    The crew takes the pills and are healed the next day.
+    The crew takes the pills and are healed the next day, except for poor @crewMember. You are left with @crewCount men.
     You feel better now and think you see a clear path through the iceburgs.
 </p>
+<br>
+<p>Remaining Crew Members:</p>
+<ul>
+    @for(name <- crewNames){
+    <li>@name</li>
+    }
+</ul>
+<br><br>
 <form action="@routes.GameController.postHomePort" method="POST">
     @CSRF.formField
     <input type="submit" value="Cowardly sail back to England"/>

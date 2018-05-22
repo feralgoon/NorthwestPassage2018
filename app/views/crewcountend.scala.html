@@ -1,4 +1,4 @@
-@(playerName : String)(crewCount : Int)(crewNames : List[String])(avatar : Int)
+@(playerName : String)(crewNames : List[String])(avatar : Int)
 <!DOCTYPE html>
 @import helper._
 <html lang="en">
@@ -7,12 +7,12 @@
     <title>Northwest Passage</title>
 </head>
 <body>
-<h1>Winning Like Someone who Wins a Lot</h1>
-<img src='@routes.Assets.versioned("images/fidget.jpg")' width="200px"><img src='@routes.Assets.versioned("images/kitten" + avatar + ".jpg")' width="150"><br>
-<p>You reach China and load up on fidget spinners.
-    When you get back to England the Queen rewards you with a monopoly on importing them.
-    You spin happily ever after.
-    The end for @playerName and the @crewCount crew members left.
+<h1>Too Few Crew</h1>
+<img src='@routes.Assets.versioned("images/island.jpg")' width="200px"><img src='@routes.Assets.versioned("images/kitten" + avatar + ".jpg")' width="150"><br>
+<p>As the crew keeps shrinking, you can't find the will or the talent to continue moving forward.
+    As your ship slowly crosses the waters, you spot an island in the distance.
+    There, you take refuge and find out that the island is called Oak Island.
+    The end for @playerName.
 </p>
 <br>
 <p>Remaining Crew Members:</p>

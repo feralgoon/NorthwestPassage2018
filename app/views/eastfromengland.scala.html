@@ -1,3 +1,4 @@
+@(crewCount : Int)(crewMember : String)(crewNames : List[String])(avatar : Int)
 <!DOCTYPE html>
 @import helper._
 <html lang="en">
@@ -7,10 +8,19 @@
 </head>
 <body>
 <h1>Too Much Land</h1>
+<img src='@routes.Assets.versioned("images/east.jpg")' width="200px"><img src='@routes.Assets.versioned("images/kitten" + avatar + ".jpg")' width="150"><br>
 <p>This way is not looking very promising.
     You keep going in and out of bays trying to find a way east but you always run into land.
+    Crew member @crewMember has been injured on deck, leaving you with @crewCount men.
     You are afraid you may run aground and be eaten by one of the roving bands of feral kittens you see frolicking upon the shore.
 </p>
+<br>
+<p>Remaining Crew Members:</p>
+<ul>
+    @for(name <- crewNames){
+    <li>@name</li>
+    }
+</ul>
 <form action="@routes.GameController.postHomePort" method="POST">
     @CSRF.formField
     <input type="submit" value="Sail back West"/>
