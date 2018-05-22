@@ -1,4 +1,6 @@
+@(playerName : String)
 <!DOCTYPE html>
+@import helper._
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -9,7 +11,16 @@
 <p>You should have paid more attention to your intuition.
     You run ashore while trying to turn around in the latest dead end bay.
     While trying to patch up the ship you and your crew are almost eaten by a rampaging herd of feral kittens.
-    The kittens destroy what remains of your ship.  A passing Viking Cruise ship picks you up and takes you back to port in disgrace. The end.
+    The kittens destroy what remains of your ship.  A passing Viking Cruise ship picks you up and takes you back to port in disgrace. The end for @playerName.
 </p>
+    <br><br>
+<form action="@routes.GameController.getWelcome" method="GET">
+    @CSRF.formField
+    <input type="submit" value="New Player"/>
+</form>
+<form action="@routes.GameController.postStart" method="POST">
+    @CSRF.formField
+    <input type="submit" value="Play it Again"/>
+</form>
 </body>
 </html>

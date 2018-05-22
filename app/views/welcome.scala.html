@@ -11,8 +11,10 @@
 <p>
     This game is meant to be played by only the most skilled gamers.  Play at your own risk!
 </p>
+
 <form action="@routes.GameController.postStart" method="POST">
     @CSRF.formField
+    <input type="text" value="Enter Name" name="playerName">
     <input type="submit" value="Let's Do This!"/>
 </form>
 <form action="@routes.GameController.getKittens" method="GET">

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+@import helper._
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Northwest Passage</title>
+</head>
+<body>
+<h1>Frigid Waters</h1>
+<p>As you begin your northward journey, the water chills to a degree none of your crew have seen before.
+    Coelacanths can be seen following the boat, and people seem uneasy. In the distance you can see
+    ice forming on the surface of the ocean, and you hear murmurs that you should turn back.
+</p>
+<br><br>
+<form action="@routes.GameController.postNorthFromEngland" method="POST">
+    @CSRF.formField
+    <input type="submit" value="Continue North"/>
+</form>
+<form action="@routes.GameController.postHomePort" method="POST">
+    @CSRF.formField
+    <input type="submit" value="Sail Back South"/>
+</form>
+</body>
+</html>

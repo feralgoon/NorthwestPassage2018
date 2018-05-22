@@ -1,4 +1,6 @@
+@(playerName : String)
 <!DOCTYPE html>
+@import helper._
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -9,7 +11,16 @@
 <p>You reach China and load up on fidget spinners.
     When you get back to England the Queen rewards you with a monopoly on importing them.
     You spin happily ever after.
-    The end.
+    The end for @playerName.
 </p>
+<br><br>
+<form action="@routes.GameController.getWelcome" method="GET">
+    @CSRF.formField
+    <input type="submit" value="New Player"/>
+</form>
+<form action="@routes.GameController.postStart" method="POST">
+    @CSRF.formField
+    <input type="submit" value="Play it Again"/>
+</form>
 </body>
 </html>
